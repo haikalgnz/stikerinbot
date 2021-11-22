@@ -18,8 +18,7 @@ ketik *${usedPrefix}menu* untuk melihat daftar perintah`.trim(), '© stikerin', 
 handler.help = ['join <chat.whatsapp.com>']
 handler.tags = ['premium']
 
+handler.premium = true
 handler.command = /^join$/i
-
-handler.premium = false
 
 module.exports = handler
