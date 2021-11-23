@@ -16,7 +16,7 @@ let handler = async (m, { conn, text, usedPrefix, participants, groupMetadata })
     let limit = 300
     let member = data.length
     if (member <= limit) {
-      conn.reply(res.gid, `Maaf ${joiner} Bot tidak dapat masuk,, Minimal Member harus ${limit} orang.`)
+      conn.reply(res.gid, `Maaf ${joiner} Bot tidak dapat masuk,, Minimal Member harus ${limit} orang,chat owner bot dengan Cara ketik [ .owner ].MASUKIN BOT GAK GRATIS ANJ BAYAR MAKANYA CHAT ONWER.`)
       await time(3000)
       conn.reply(res.gid, `Maaf Semua,, Bot akan keluar..`)
       await time(2000)
