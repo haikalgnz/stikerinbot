@@ -13,7 +13,7 @@ let handler = async (m, { conn, text, usedPrefix, participants, groupMetadata })
     let grup = await conn.getName(res.gid)
     let time = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms)); }
     let data = (await conn.groupMetadata(res.gid)).participants.map(u => u.jid)
-    let limit = 50
+    let limit = 300
     let member = data.length
     if (member <= limit) {
       conn.reply(res.gid, `Maaf ${joiner} Bot tidak dapat masuk,, Minimal Member harus ${limit} orang.`)
