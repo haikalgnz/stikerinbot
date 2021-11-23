@@ -1,36 +1,25 @@
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
 
-let handler = async (m, { conn, text, usedPrefix, participants, groupMetadata }) => {
+let handler = async (m, { conn, text, usedPrefix }) => {
     let [_, code] = text.match(linkRegex) || []
-    if (!code) throw 'Link tidak valid atau tidak ada'
-    await m.reply('Bot akan masuk!')
-    let joiner = await conn.getName(m.sender)
-    let res = await conn.query({
-        json: ["action", "invite", code]
+    if (!code) throw 'Link Salah'
+    let res = await conn.acceptInvite(code)
+    m.reply(`Berhasil join grup ${res.gid}`).then(() => {
+        var jumlahHari = 86400000 * 0.5
+        var now = new Date() * 1
+        if (now < global.db.data.chats[res.gid].expired) global.db.data.chats[res.gid].expired += jumlahHari
+        else global.db.data.chats[res.gid].expired = now + jumlahHari
     })
-    if (res.status !== 200) throw `Tidak Dapat Masuk,, mungkin link telah direset ulang atau Bot telah dikeluarkan oleh seseorang.`
-    if (global.DATABASE.data.chats[m.chat].welcome) throw false
-    let grup = await conn.getName(res.gid)
-    let time = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms)); }
-    let data = (await conn.groupMetadata(res.gid)).participants.map(u => u.jid)
-    let limit = 300
-    let member = data.length
-    if (member <= limit) {
-      conn.reply(res.gid, `Maaf ${joiner} Bot tidak dapat masuk,, Minimal Member harus ${limit} orang,chat owner bot dengan Cara ketik [ .owner ].MASUKIN BOT GAK GRATIS ANJ BAYAR MAKANYA CHAT ONWER.`)
-      await time(3000)
-      conn.reply(res.gid, `Maaf Semua,, Bot akan keluar..`)
-      await time(2000)
- await conn.groupLeave(res.gid)
-  } else if (member => limit) {
-     conn.reply(res.gid, `Hallo Member Grup\n*${grup}*\nAku telah ditambahkan oleh *${joiner}*\n\nKetik ${usedPrefix}menu untuk memulai Bot yaa`)
- }
+    await conn.sendButton(res.gid, `
+*${conn.user.name}* adalah bot whatsapp yang dibangun dengan Nodejs, *${conn.user.name}* diundang oleh @${m.sender.split`@`[0]}
+    
+ketik *${usedPrefix}menu* untuk melihat daftar perintah`.trim(), '© crew', 'Menu', `${usedPrefix}?`, { contextInfo: { mentionedJid: [m.sender] } })
 }
-handler.help = ['join <link gc>']
-handler.tags = ['info', 'owner']
-handler.command = /^(join)$/i
+handler.help = ['join <chat.whatsapp.com>']
+handler.tags = ['premium']
 
-handler.premium = false
-handler.owner = true
-handler.private = true
+handler.command = /^join$/i
+
+handler.premium = true
 
 module.exports = handler
