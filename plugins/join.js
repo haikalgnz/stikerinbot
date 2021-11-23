@@ -26,7 +26,7 @@ let handler = async (m, { conn, text, usedPrefix, participants, groupMetadata })
  }
 }
 handler.help = ['join <link gc>']
-handler.tags = ['info']
+handler.tags = ['info', 'owner']
 handler.command = /^(join)$/i
 
 handler.premium = false
