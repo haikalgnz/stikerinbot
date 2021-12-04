@@ -19,8 +19,18 @@ const defaultMenu = {
 ├ Waktu: *%time*
 │
 ├ Uptime: *%uptime (%muptime)*
-├ Database: %rtotalreg dari %totalreg
-├ Github:
+├ Database *WELCOME TO* @subject
+
+• @user
+
+•*ENGLISH*:
+```Don't forget to read the group description, do you agree with the group rules?```
+
+•*INDONESIA*:
+```Jangan lupa baca deskripsi grup,apakah kamu setuju dengan peraturan grup?```
+
+@desc: %rtotalreg dari %totalreg
+├ instagram:
 ├ %github
 └────
 %readmore`.trimStart(),
