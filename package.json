@@ -1,7 +1,7 @@
 {
-  "name": "stikerinbot",
+  "name": "ikalbotz",
   "version": "1.1.2",
-  "description": "WhatsApp Bot Ringan",
+  "description": "WhatsApp Bot Ringan,yang berat itu dosa lu anj",
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -14,17 +14,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ariffb25/stikerinbot.git"
+    "url": "git+https://github.com/haikalgnz/stikerinbot.git"
   },
   "keywords": [
     "whatsapp-bot"
   ],
-  "author": "Ariffb",
+  "author": "ikal",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ariffb25/stikerinbot/issues"
+    "url": "https://github.com/haikalgnz/stikerinbot/issues"
   },
-  "homepage": "https://github.com/ariffb25/stikerinbot",
+  "homepage": "https://instagram.com/haikalrizkiiii_",
   "dependencies": {
     "@adiwajshing/baileys": "github:adiwajshing/baileys",
     "awesome-phonenumber": "^2.54.0",
